@@ -3,7 +3,7 @@ pipeline {
 				stages {
 					stage('BUILD') {
 						when {
-							expression {job == 'BUILD'}
+							expression {job == 'RUN'}
 						}
 						steps {
 							sh '''
@@ -16,7 +16,7 @@ pipeline {
 					
 					stage('TEST') {
 						when {
-							expression {job == 'TEST'}
+							expression {job == 'NORUN'}
 						}
 						steps {
 							sh '''
@@ -29,7 +29,7 @@ pipeline {
 					
 					stage('DEPLOY') {
 						when {
-							expression {job == 'DEPLOY'}
+							expression {job == 'RUN'}
 						}
 						steps {
 							sh '''
