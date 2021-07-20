@@ -2,6 +2,9 @@ pipeline {
 	agent {label 'slaves'} 
 				stages {
 					stage('BUILD') {
+						when {
+							expression {job == 'BUILD'}
+						}
 						steps {
 							sh '''
 								pwd
@@ -12,6 +15,9 @@ pipeline {
 					}
 					
 					stage('TEST') {
+						when {
+							expression {job == 'TEST'}
+						}
 						steps {
 							sh '''
 								pwd
@@ -22,6 +28,9 @@ pipeline {
 					}
 					
 					stage('DEPLOY') {
+						when {
+							expression {job == 'DEPLOY'}
+						}
 						steps {
 							sh '''
 								pwd
