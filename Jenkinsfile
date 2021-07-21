@@ -1,6 +1,7 @@
 pipeline {
 				agent any 
 				stages {
+					/*
 					stage('STAGE1') {
 						steps {
 							catchError(buildResult : 'SUCCESS', stageResult : 'FAILURE'){
@@ -13,8 +14,12 @@ pipeline {
 							}
 						}
 					}
+					*/
 					
 					stage('STAGE2') {
+						when {
+							branch : master
+						}
 						steps {
 							sh '''
 								pwd
