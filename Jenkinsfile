@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	parameters {
-		string { name: 'TARGET_ENV', description : 'where to deploy'}
+		string(name: 'TARGET_ENV', description : 'where to deploy')
 	}
 	environment {
 		DEPLOY_TO = "$(TARGET_ENV)"
