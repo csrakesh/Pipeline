@@ -2,14 +2,16 @@ pipeline {
 				agent any 
 				stages {
 					stage('STAGE1') {
-						steps {
-							sh '''
-								pwd
-								sleep 5
-								echo This is the fist stage: BUILD
-								exit 1
-							'''
-						}	
+						catchError(buildResult : 'SUCCESS', stageResult : 'FAILURE'){
+							steps {
+								sh '''
+									pwd
+									sleep 5
+									echo This is the fist stage1
+									exit 1
+								'''
+							}
+						}
 					}
 					
 					stage('STAGE2') {
@@ -17,7 +19,7 @@ pipeline {
 							sh '''
 								pwd
 								sleep 5
-								echo This is the fist stage: DEPLOY
+								echo This is the fist stage2
 							'''
 						}	
 					}
