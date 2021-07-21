@@ -2,8 +2,8 @@ pipeline {
 				agent any 
 				stages {
 					stage('STAGE1') {
-						catchError(buildResult : 'SUCCESS', stageResult : 'FAILURE'){
-							steps {
+						steps {
+							catchError(buildResult : 'SUCCESS', stageResult : 'FAILURE'){
 								sh '''
 									pwd
 									sleep 5
