@@ -18,7 +18,7 @@ pipeline {
 					
 					stage('STAGE2') {
 						when {
-							branch : 'master'
+							branch 'master'
 						}
 						steps {
 							sh '''
