@@ -15,8 +15,7 @@ pipeline {
 				sh '''
 					pwd
 					sleep 5
-					echo This is the fist stage1
-					exit 1
+					echo "Deploying to test environment"
 				'''
 			}
 		}
@@ -29,7 +28,7 @@ pipeline {
 				sh '''
 					pwd
 					sleep 5
-					echo This is the fist stage2
+					echo "Deploying to prod environment"
 				'''
 			}	
 		}
