@@ -1,10 +1,7 @@
 pipeline {
-	agent {label 'slaves'} 
+				agent any 
 				stages {
 					stage('BUILD') {
-						when {
-							expression {job == 'RUN'}
-						}
 						steps {
 							sh '''
 								pwd
@@ -15,22 +12,39 @@ pipeline {
 					}
 					
 					stage('TEST') {
-						when {
-							expression {job == 'NORUN'}
+						parallel {
+							stage('TEST1'){
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the TEST1 stage
+									'''
+								}
+							}
+							stage('TEST2'){
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the TEST2 stage
+									'''
+								}
+							}
+							stage('TEST3'){
+								steps {
+									sh '''
+										pwd
+										sleep 5
+										echo This is the TEST3 stage
+									'''
+								}
+							}
 						}
-						steps {
-							sh '''
-								pwd
-								sleep 5
-								echo This is the fist stage: TEST
-							'''
-						}	
+							
 					}
 					
 					stage('DEPLOY') {
-						when {
-							expression {job == 'RUN'}
-						}
 						steps {
 							sh '''
 								pwd
