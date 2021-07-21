@@ -33,4 +33,9 @@ pipeline {
 			}	
 		}
 	}
+	post{
+		always{
+			echo "You can run in post build"
+		}
+	}
 }
